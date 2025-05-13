@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Tienda</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .producto { border: 1px solid #ccc; margin: 10px 0; padding: 10px; }
+    .carrito { margin-top: 20px; border-top: 2px solid #000; padding-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Mi Tienda</h1>
+
+  <div class="producto">
+    <h2>Producto A - $10</h2>
+    <button onclick="agregarAlCarrito('Producto A', 10)">Agregar</button>
+  </div>
+  <div class="producto">
+    <h2>Producto B - $15</h2>
+    <button onclick="agregarAlCarrito('Producto B', 15)">Agregar</button>
+  </div>
+
+  <div class="carrito" id="carrito">
+    <h3>Carrito</h3>
+    <ul id="listaCarrito"></ul>
+    <p><strong>Total:</strong> $<span id="total">0</span></p>
+    <button onclick="enviarPorWhatsApp()">Enviar por WhatsApp</button>
+  </div>
+
+  <script>
+    const carrito = [];
+    let total = 0;
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      total += precio;
+      actualizarCarrito();
+    }
